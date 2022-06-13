@@ -48,6 +48,8 @@ dependencies {
     implementation files('libs/api-82.jar')
     //noinspection GradleDependency
     implementation 'com.orhanobut:logger:2.2.0'
+    //noinspection GradleDependency
+    implementation 'com.koushikdutta.async:androidasync:3.1.0'
 }
 
 def getVersionCode1() {

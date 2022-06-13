@@ -2,6 +2,7 @@ package com.example.xposed.library;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -106,6 +107,28 @@ public class Files {
             e.printStackTrace();
         }
         return builder.toString();
+    }
+
+    /**
+     * 读文件
+     *
+     * @param file 文件
+     * @return 内容
+     */
+    public static byte[] readFileBytes(File file) {
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        try {
+            FileInputStream fileInputStream = new FileInputStream(file);
+            int len = 0;
+            byte[] buffer = new byte[1024];
+            while ((len = fileInputStream.read(buffer)) != -1) {
+                byteArrayOutputStream.write(buffer, 0, len);
+                byteArrayOutputStream.flush();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return byteArrayOutputStream.toByteArray();
     }
 
     /**
