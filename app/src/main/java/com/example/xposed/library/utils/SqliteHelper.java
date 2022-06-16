@@ -1,4 +1,4 @@
-package com.example.xposed.library;
+package com.example.xposed.library.utils;
 
 import android.content.ContentValues;
 import android.database.Cursor;

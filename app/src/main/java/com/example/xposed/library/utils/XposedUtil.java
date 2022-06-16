@@ -1,4 +1,4 @@
-package com.example.xposed.library;
+package com.example.xposed.library.utils;
 
 import android.app.Activity;
 import android.app.ActivityManager;
@@ -15,6 +15,7 @@ import android.os.Process;
 import android.util.ArrayMap;
 import android.widget.Toast;
 
+import com.example.xposed.library.log.Log2;
 import com.example.xposed.library.shell.Shell;
 
 import java.io.Closeable;

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.example.xposed.BuildConfig;
+import com.example.xposed.library.log.Log2;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +17,7 @@ import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XposedHelpers;
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
 
-public abstract class BaseHook implements IXposedHookLoadPackage, Application.ActivityLifecycleCallbacks {
+public abstract class Hook implements IXposedHookLoadPackage, Application.ActivityLifecycleCallbacks {
     public Activity focusActivity;
     public Application applicationContext;
 
@@ -44,7 +45,7 @@ public abstract class BaseHook implements IXposedHookLoadPackage, Application.Ac
                 super.afterHookedMethod(param);
 
                 applicationContext = (Application) param.thisObject;
-                applicationContext.registerActivityLifecycleCallbacks(BaseHook.this);
+                applicationContext.registerActivityLifecycleCallbacks(Hook.this);
             }
         });
     }

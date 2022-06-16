@@ -1,4 +1,4 @@
-package com.example.xposed.library;
+package com.example.xposed.library.log;
 
 import android.database.Cursor;
 import android.os.Bundle;
@@ -6,6 +6,7 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 
+import com.example.xposed.library.utils.SqliteHelper;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.FormatStrategy;
 import com.orhanobut.logger.Logger;

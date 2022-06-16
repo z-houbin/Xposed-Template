@@ -1,6 +1,6 @@
 package com.example.xposed.library.debug;
 
-import com.example.xposed.library.Log2;
+import com.example.xposed.library.log.Log2;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;

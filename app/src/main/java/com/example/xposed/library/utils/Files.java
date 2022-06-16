@@ -1,4 +1,6 @@
-package com.example.xposed.library;
+package com.example.xposed.library.utils;
+
+import com.example.xposed.library.log.Log2;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

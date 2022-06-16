@@ -2,12 +2,12 @@ package com.example.xposed;
 
 import android.app.Activity;
 
-import com.example.xposed.library.BaseHook;
-import com.example.xposed.library.Log2;
+import com.example.xposed.library.Hook;
+import com.example.xposed.library.log.Log2;
 
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
 
-public class MainHook extends BaseHook {
+public class MainHook extends Hook {
     {
         targetPackage.add("com.tencent.mm");
     }
