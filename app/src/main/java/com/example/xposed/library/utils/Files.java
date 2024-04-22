@@ -1,6 +1,6 @@
 package com.example.xposed.library.utils;
 
-import com.example.xposed.library.log.Log2;
+import com.example.xposed.library.XLog;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -170,7 +170,7 @@ public class Files {
             fos.flush();
             fos.close();
         } catch (Exception e) {
-            Log2.e(e);
+            XLog.e(e);
         }
     }
 
@@ -209,7 +209,7 @@ public class Files {
             output.close();
             input.close();
         } catch (Exception e) {
-            Log2.e(e);
+            XLog.e(e);
         }
     }
 }

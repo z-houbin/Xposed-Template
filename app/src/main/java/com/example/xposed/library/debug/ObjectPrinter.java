@@ -1,6 +1,6 @@
 package com.example.xposed.library.debug;
 
-import com.example.xposed.library.log.Log2;
+import com.example.xposed.library.XLog;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -34,13 +34,13 @@ public class ObjectPrinter implements BasePrinter {
                     //从obj中获取field变量
                     Object o = field.get(obj);
                     builder.append("变量： ").append(varName).append(" = ");
-                    builder.append(Log2.getLog(o));
+                    builder.append(XLog.getLog(o));
                     builder.append("\r\n");
                     if (!access) {
                         field.setAccessible(false);
                     }
                 } catch (Exception ex) {
-                    Log2.e(ex);
+                    XLog.e(ex);
                 }
             }
 
@@ -64,9 +64,9 @@ public class ObjectPrinter implements BasePrinter {
                 }
                 builder.append(")");
             }
-            Log2.d(tag, builder.toString());
+            XLog.d(tag, builder.toString());
         } catch (Exception e) {
-            Log2.e(e);
+            XLog.e(e);
         }
     }
 }

@@ -47,11 +47,10 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     compileOnly files('libs/api-82.jar')
     //noinspection GradleDependency
-    implementation 'com.orhanobut:logger:2.2.0'
-    //noinspection GradleDependency
     implementation 'com.koushikdutta.async:androidasync:3.1.0'
     //noinspection GradleDependency
     implementation 'com.google.code.gson:gson:2.6.2'
+    implementation 'cn.hutool:hutool-all:5.8.26'
 }
 
 def getVersionCode1() {

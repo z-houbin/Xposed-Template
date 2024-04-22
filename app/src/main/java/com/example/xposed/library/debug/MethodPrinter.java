@@ -1,6 +1,6 @@
 package com.example.xposed.library.debug;
 
-import com.example.xposed.library.log.Log2;
+import com.example.xposed.library.XLog;
 
 import java.lang.reflect.Member;
 import java.util.Arrays;
@@ -63,9 +63,9 @@ public class MethodPrinter implements BasePrinter {
                 }
             }
         } catch (Exception e) {
-            Log2.e(e);
+            XLog.e(e);
         }
 
-        Log2.d(builder.toString());
+        XLog.d(builder.toString());
     }
 }

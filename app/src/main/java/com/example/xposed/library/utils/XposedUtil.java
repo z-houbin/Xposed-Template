@@ -15,7 +15,7 @@ import android.os.Process;
 import android.util.ArrayMap;
 import android.widget.Toast;
 
-import com.example.xposed.library.log.Log2;
+import com.example.xposed.library.XLog;
 import com.example.xposed.library.shell.Shell;
 
 import java.io.Closeable;
@@ -54,7 +54,7 @@ public class XposedUtil {
             }
             return new String(str).toLowerCase();
         } catch (Exception e) {
-            Log2.e(e);
+            XLog.e(e);
             return "";
         }
     }
@@ -81,11 +81,11 @@ public class XposedUtil {
                         return info.processName;
                     }
                 } catch (Exception e) {
-                    Log2.e(e);
+                    XLog.e(e);
                 }
             }
         } catch (Exception e) {
-            Log2.e(e);
+            XLog.e(e);
         }
         return "";
     }
@@ -209,7 +209,7 @@ public class XposedUtil {
                 f.setAccessible(true);
                 return f.get(object);
             } catch (IllegalAccessException e) {
-                Log2.e(e);
+                XLog.e(e);
             }
         }
         return null;
@@ -229,7 +229,7 @@ public class XposedUtil {
                 try {
                     return field.get(object);
                 } catch (IllegalAccessException e) {
-                    Log2.e(e);
+                    XLog.e(e);
                 }
             }
         }
@@ -275,7 +275,7 @@ public class XposedUtil {
             try {
                 return method.invoke(object, params);
             } catch (IllegalAccessException | InvocationTargetException e) {
-                Log2.e(e);
+                XLog.e(e);
             }
         }
         return null;
@@ -315,7 +315,7 @@ public class XposedUtil {
                         field.set(object, value);
                     }
                 } catch (IllegalAccessException e) {
-                    Log2.e(e);
+                    XLog.e(e);
                 }
                 break;
             }
@@ -344,7 +344,7 @@ public class XposedUtil {
                 f.set(object, value);
             }
         } catch (IllegalAccessException e) {
-            Log2.e(e);
+            XLog.e(e);
         }
     }
 
@@ -426,7 +426,7 @@ public class XposedUtil {
                 }
             }
         } catch (Exception e) {
-            Log2.e(e);
+            XLog.e(e);
         }
         return null;
     }

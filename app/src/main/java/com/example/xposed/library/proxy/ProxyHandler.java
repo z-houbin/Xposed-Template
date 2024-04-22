@@ -2,7 +2,7 @@ package com.example.xposed.library.proxy;
 
 import android.view.View;
 
-import com.example.xposed.library.log.Log2;
+import com.example.xposed.library.XLog;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
@@ -29,7 +29,7 @@ public class ProxyHandler {
         try {
             return proxy(classLoader.loadClass(source), proxy);
         } catch (ClassNotFoundException e) {
-            Log2.e("proxy failed", e);
+            XLog.e("proxy failed", e);
             return null;
         }
     }
@@ -65,7 +65,7 @@ public class ProxyHandler {
             public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
                 String methodName = method.getName();
 
-                Log2.d("invoke method", methodName);
+                XLog.d("invoke method", methodName);
 
                 // 执行原始函数
                 Object result = method.invoke(source, args);
@@ -94,17 +94,17 @@ public class ProxyHandler {
             @Override
             protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
                 super.beforeHookedMethod(param);
-                Log2.d("setOnClickListener", param.thisObject);
+                XLog.d("setOnClickListener", param.thisObject);
 
                 ProxyHandler proxyHandler = new ProxyHandler(classLoader);
                 param.args[0] = proxyHandler.<View.OnClickListener>proxyThen(param.args[0], new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Log2.d("view.click", v);
+                        XLog.d("view.click", v);
                     }
                 });
 
-                Log2.d("setOnClickListener hook", "end");
+                XLog.d("setOnClickListener hook", "end");
             }
         });
     }

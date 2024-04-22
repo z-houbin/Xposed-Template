@@ -1,6 +1,6 @@
 package com.example.xposed.library.debug;
 
-import com.example.xposed.library.log.Log2;
+import com.example.xposed.library.XLog;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ public class Trace {
      * @param debugListener 回调
      */
     public static void traceOn(Class<?> cls, DebugListener debugListener) {
-        Log2.d("Trace Class " + cls);
+        XLog.d("Trace Class " + cls);
         if (cls == null || debugListener == null) {
             return;
         }
@@ -49,7 +49,7 @@ public class Trace {
      * @param debugListener 回调
      */
     public static void traceQuiet(Class<?> cls, DebugListener debugListener) {
-        Log2.d("Trace Class " + cls);
+        XLog.d("Trace Class " + cls);
         if (cls == null) {
             return;
         }
@@ -81,7 +81,7 @@ public class Trace {
      * @param debugListener 函数调用回调
      */
     public static void trace(Class<?> cls, DebugListener debugListener) {
-        Log2.d("Trace Class " + cls);
+        XLog.d("Trace Class " + cls);
         if (cls == null) {
             return;
         }

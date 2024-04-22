@@ -6,9 +6,6 @@ import android.content.Context;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.example.xposed.BuildConfig;
-import com.example.xposed.library.log.Log2;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,22 +20,29 @@ public abstract class Hook implements IXposedHookLoadPackage, Application.Activi
 
     protected XC_LoadPackage.LoadPackageParam packageParam;
     protected List<String> targetPackage = new ArrayList<>();
-    protected static String DEFAULT_TAG = "com.example.xposed";
+    protected static String DEFAULT_TAG = "@XLog";
+    protected static boolean hasLoad = false;
 
     @Override
     public void handleLoadPackage(XC_LoadPackage.LoadPackageParam loadPackageParam) throws Throwable {
         this.packageParam = loadPackageParam;
 
-        Log2.init(DEFAULT_TAG, BuildConfig.DEBUG);
+        XLog.enable(DEFAULT_TAG);
 
         if (targetPackage.isEmpty()) {
-            Log2.d("targetPackage.empty " + loadPackageParam.packageName);
+            XLog.d("targetPackage.empty " + loadPackageParam.packageName);
         } else if (targetPackage.contains(loadPackageParam.packageName)) {
             this.onLoadPackage(packageParam);
         }
     }
 
     protected void onLoadPackage(XC_LoadPackage.LoadPackageParam packageParam) {
+        if (hasLoad) {
+            return;
+        } else {
+            hasLoad = true;
+        }
+
         XposedHelpers.findAndHookMethod(Application.class, "attach", Context.class, new XC_MethodHook() {
             @Override
             protected void afterHookedMethod(MethodHookParam param) throws Throwable {
@@ -68,7 +72,7 @@ public abstract class Hook implements IXposedHookLoadPackage, Application.Activi
             try {
                 return classLoader.loadClass(name);
             } catch (ClassNotFoundException e) {
-                Log2.e(e);
+                XLog.e(e);
             }
         }
         return null;
